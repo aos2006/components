@@ -1,6 +1,0 @@
-{
-  "main": "./OrderHistory.tsx",
-  "name": "@latoken-component/order-history",
-  "version": "10.0.168",
-  "license": "MIT"
-}

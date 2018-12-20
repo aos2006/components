@@ -1,6 +1,0 @@
-{
-  "main": "./index.ts",
-  "name": "@latoken-component/newOrderHistory",
-  "version": "10.0.188",
-  "license": "MIT"
-}

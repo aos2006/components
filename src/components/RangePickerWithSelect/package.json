@@ -1,6 +1,0 @@
-{
-  "main": "./RangePickerWithSelect.tsx",
-  "name": "@latoken-component/RangePickerWithSelect",
-  "license": "MIT",
-  "version": "10.0.178"
-}

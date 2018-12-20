@@ -1,6 +1,0 @@
-{
-  "main": "./index.ts",
-  "name": "@latoken-component/latoken-data",
-  "version": "10.0.186",
-  "license": "MIT"
-}

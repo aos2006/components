@@ -1,9 +1,0 @@
-{
-  "main": "Tooltip.js",
-  "name": "@latoken-component/tooltip",
-  "version": "0.6.43",
-  "license": "MIT",
-  "dependencies": {
-    "rc-tooltip": "3.7.0"
-  }
-}

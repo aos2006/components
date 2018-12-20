@@ -1,6 +1,0 @@
-{
-  "main": "./Logo.tsx",
-  "name": "@latoken-component/logo",
-  "version": "10.0.95",
-  "license": "MIT"
-}

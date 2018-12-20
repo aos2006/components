@@ -1,9 +1,0 @@
-{
-  "main": "Table.js",
-  "name": "@latoken-component/table",
-  "version": "10.0.82",
-  "license": "MIT",
-  "dependencies": {
-    "rc-table": "6.1.7"
-  }
-}

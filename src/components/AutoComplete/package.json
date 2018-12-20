@@ -1,9 +1,0 @@
-{
-  "main": "AutoComplete.tsx",
-  "name": "@latoken-component/autocomplete",
-  "version": "10.0.27",
-  "license": "MIT",
-  "dependencies": {
-    "rc-select": "~7.7.0"
-  }
-}

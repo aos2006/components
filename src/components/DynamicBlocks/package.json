@@ -1,7 +1,0 @@
-{
-  "main": "DynamicBlocks.tsx",
-  "name": "@latoken-component/dynamic-blocks",
-  "license": "MIT",
-  "dependencies": {},
-  "version": "9.1.3"
-}

@@ -1,6 +1,0 @@
-{
-  "main": "./Card.tsx",
-  "name": "@latoken-component/card",
-  "license": "MIT",
-  "version": "10.0.148"
-}

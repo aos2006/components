@@ -1,6 +1,0 @@
-{
-  "main": "OrderBook.js",
-  "name": "@latoken-component/orderBook",
-  "version": "10.0.174",
-  "license": "MIT"
-}

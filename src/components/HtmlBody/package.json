@@ -1,6 +1,0 @@
-{
-  "main": "./HtmlBody.tsx",
-  "name": "@latoken-component/HtmlBody",
-  "license": "MIT",
-  "version": "10.0.30"
-}

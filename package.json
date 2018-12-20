@@ -52,7 +52,7 @@
     "test": "better-npm-run test",
     "test:watch": "better-npm-run test:watch",
     "testKarma": "echo 1",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -o ./build -c ./.storybook-prod"
   },
   "husky": {
     "hooks": {
@@ -71,131 +71,13 @@
     "proseWrap": "never"
   },
   "betterScripts": {
-    "local": {
-      "command": "webpack-dev-server --hot --hotOnly --inline --config webpack/webpack.config.dev.js",
-      "env": {
-        "METRICS_URL": "https://dev-api.nekotal.tech:8080/",
-        "NODE_ENV": "development",
-        "WALLET_PORT": "8060",
-        "WALLET_HOSTNAME": "wallet.latoken.lc",
-        "API_PORT": "",
-        "API_HOSTNAME": "https://api.dev-dex.nekotal.tech",
-        "API_URL": "https://api.dev-dex.nekotal.tech",
-        "WS_URL": "ws://api.latoken.lc:3000"
-      }
-    },
-    "local:nocaptcha": {
-      "command": "webpack-dev-server --config webpack/webpack.dev.js",
-      "env": {
-        "WS_URL": "ws://api.latoken.lc:3000",
-        "METRICS_URL": "https://dev-api.nekotal.tech:8080/",
-        "NODE_ENV": "development",
-        "WALLET_PORT": "8060",
-        "WALLET_HOSTNAME": "wallet.latoken.lc",
-        "API_PORT": "27384",
-        "API_HOSTNAME": "127.0.0.1",
-        "IS_REGRESS_TEST": true,
-        "RECAPTCHA_SITE": "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
-        "RECAPTCHA_SITE_NEW": "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-      }
-    },
-    "local:buildprod": {
-      "command": "webpack-dev-server --config webpack/webpack.config.dev.js",
-      "env": {
-        "METRICS_URL": "https://dev-api.nekotal.tech:8080/",
-        "NODE_ENV": "production",
-        "WALLET_PORT": "8060",
-        "WALLET_HOSTNAME": "wallet.latoken.lc",
-        "API_PORT": "27384",
-        "API_HOSTNAME": "127.0.0.1"
-      }
-    },
-    "local:docker": {
-      "command": "webpack-dev-server --config webpack/webpack.dev.js",
-      "env": {
-        "METRICS_URL": "https://dev-api.nekotal.tech:8080/",
-        "NODE_ENV": "development",
-        "WALLET_PORT": "8060",
-        "WALLET_HOSTNAME": "wallet.latoken.lc",
-        "API_PORT": "27384",
-        "API_HOSTNAME": "back"
-      }
-    },
-    "local:apidev": {
-      "command": "webpack-dev-server --config webpack/webpack.dev.js",
-      "env": {
-        "METRICS_URL": "https://dev-api.nekotal.tech:8080/",
-        "NODE_ENV": "development",
-        "WALLET_PORT": "8060",
-        "WALLET_HOSTNAME": "wallet.latoken.lc",
-        "API_PORT": "27384",
-        "API_HOSTNAME": "46.101.106.204"
-      }
-    },
-    "local:apiprod": {
-      "command": "webpack-dev-server --config webpack/webpack.dev.js",
-      "env": {
-        "METRICS_URL": "https://dev-api.nekotal.tech:8080/",
-        "NODE_ENV": "development",
-        "WALLET_PORT": "8060",
-        "WALLET_HOSTNAME": "wallet.latoken.lc",
-        "API_PORT": "27384",
-        "API_HOSTNAME": "46.101.130.112"
-      }
-    },
-    "local:widget": {
-      "command": "webpack-dev-server --config webpack/webpack.widget.dev.js",
-      "env": {
-        "METRICS_URL": "https://dev-api.nekotal.tech:8080/",
-        "NODE_ENV": "development",
-        "WALLET_PORT": "8060",
-        "WALLET_HOSTNAME": "wallet.latoken.lc",
-        "API_PORT": "",
-        "API_HOSTNAME": "https://api.dev-dex.nekotal.tech/",
-        "WS_URL": "ws://api.latoken.lc:3000"
-      }
-    },
     "build": {
-      "command": "webpack --config webpack/webpack.config.prod.js --bail",
+      "command": "webpack --config ./.storybook-prod/webpack.config.prod.js --bail",
       "env": {
         "NODE_ENV": "production",
         "API_URL": "https://api.dev-dex.nekotal.tech"
       }
     },
-    "build:widget": {
-      "command": "webpack --config webpack/webpack.widget.prod.js --bail",
-      "env": {
-        "NODE_ENV": "production"
-      }
-    },
-    "build:landing": {
-      "command": "webpack --config webpack/webpack.widget_landing.prod.js --bail",
-      "env": {
-        "NODE_ENV": "production"
-      }
-    },
-    "build:nocaptcha": {
-      "command": "webpack --config webpack/webpack.prod.js --bail",
-      "env": {
-        "NODE_ENV": "production",
-        "IS_REGRESS_TEST": true,
-        "RECAPTCHA_SITE": "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
-        "RECAPTCHA_SITE_NEW": "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-      }
-    },
-    "test": {
-      "command": "mocha-webpack --require testSetup.js --webpack-config webpack/webpack.test.js src/**/*.test.js",
-      "env": {
-        "NODE_ENV": "development"
-      }
-    },
-    "test:watch": {
-      "command": "mocha-webpack --require testSetup.js --webpack-config webpack/webpack.test.js --watch src/**/*.test.js",
-      "env": {
-        "NODE_ENV": "development"
-      }
-    }
-  },
   "dependencies": {
     "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
@@ -203,29 +85,6 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
-    "@latoken-component/HtmlBody": "10.0.29",
-    "@latoken-component/NumberWithZeros": "^10.0.86",
-    "@latoken-component/VirtualTable": "^10.0.133",
-    "@latoken-component/autocomplete": "10.0.26",
-    "@latoken-component/button": "^10.0.85",
-    "@latoken-component/chart": "10.0.40",
-    "@latoken-component/draggableAndScrollable": "^10.0.43",
-    "@latoken-component/field": "10.0.52",
-    "@latoken-component/form": "10.0.1",
-    "@latoken-component/hash": "^10.0.85",
-    "@latoken-component/icon": "^10.0.82",
-    "@latoken-component/order-history": "10.0.53",
-    "@latoken-component/orderBook": "^10.0.64",
-    "@latoken-component/plate": "9.1.3",
-    "@latoken-component/progress": "9.1.3",
-    "@latoken-component/responsiver": "^0.6.192",
-    "@latoken-component/svggraph": "10.0.9",
-    "@latoken-component/table": "10.0.45",
-    "@latoken-component/table-scroll": "10.0.7",
-    "@latoken-component/tabs": "9.1.3",
-    "@latoken-component/tooltip": "0.6.43",
-    "@latoken-component/utils": "10.0.38",
-    "@latoken-dex/ladex": "^0.1.209",
     "@storybook/addon-storyshots": "^4.1.3",
     "@types/chai": "4.1.2",
     "@types/classnames": "2.2.3",
@@ -296,6 +155,7 @@
     "js-sha3": "^0.8.0",
     "jsdom": "11.9.0",
     "json-loader": "0.5.7",
+    "lerna": "^3.7.1",
     "less": "2.7.3",
     "less-loader": "4.1.0",
     "lint-staged": "7.0.4",
