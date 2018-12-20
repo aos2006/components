@@ -1,0 +1,6 @@
+{
+  "main": "TableScroll.js",
+  "name": "@latoken-component/table-scroll",
+  "version": "10.0.27",
+  "license": "MIT"
+}

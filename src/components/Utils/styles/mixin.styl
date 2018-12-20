@@ -1,0 +1,42 @@
+reset-component() {
+  font-family: $font-family;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $text-color;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+iconfont-mixin()
+  display: inline-block
+  font-style: normal
+  vertical-align: baseline
+  text-align: center
+  text-transform: none
+  line-height: 1
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  &:before
+    display: block
+    font-family: "anticon" !important
+
+iconfont-font($content)
+  font-family: 'anticon'
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  content: $content
+
+// for iconfont font size
+// fix chrome 12px bug, support ie
+iconfont-size-under-12px($size, $rotate = 0deg)
+  display: inline-block
+  $font-scale = unit($size / 12px, "")
+  font-size: 12px
+  transform: scale($font-scale) rotate($rotate)
+  :root &
+    font-size: $font-size-base;
+

@@ -1,0 +1,14 @@
+rules:
+
+  # Ensure all imports appear before other statements
+  import/first: 0
+
+  # Reorder imports automatically. import-order-autofix багованный, теряет некоторые импорты при автофиксе
+  # import-order-autofix/order: [2, { newlines-between: "always", groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'] }]
+  import/order: [2, { newlines-between: "always", groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'] }]
+
+  # Ensure a default export is present, given a default import
+  import/default: 2
+
+  # Ensures an imported module can be resolved to a module on the local filesystem
+  # import/no-unresolved: [2, { commonjs: true }]

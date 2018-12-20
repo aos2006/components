@@ -1,0 +1,284 @@
+.orderBook {
+  width: 100%;
+
+  min-width: 320px;
+
+  &.mobileOrderBook {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 280px;
+    .orderBookHeader {
+      display none;
+    }
+    > div {
+      display flex;
+    }
+
+    .mobileOrdersTablesWrap {
+      display flex;
+      overflow: auto;
+      flex: 1;
+      position: relative;
+
+      .tableDivider {
+        position: absolute;
+        left: calc(50% - 1px);
+        width: 1px;
+        background-color: #f2f2f2;
+        height: 100%;
+      }
+    }
+
+
+    .orderBookAction {
+      min-width: 60px;
+    }
+
+    .mobileDraggableAndScrollable {
+      &:after {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 100%;
+
+        left: calc(50% - 1px);
+        top: 0;
+
+        background-color: #f2f2f2;
+      }
+    }
+
+    table {
+      td, th {
+        &:first-child {
+          padding-right: 0;
+        }
+        &:last-child {
+          padding-left: 0;
+        }
+      }
+
+      @media (max-width: 330px) {
+        th {
+          letter-spacing: -1px;
+        }
+      }
+    }
+    .sellRow {
+      .cellBar {
+        right: auto
+        left: 0
+      }
+    }
+  }
+
+
+  .draggableContainer {
+    height: 350px;
+    overflow-y: hidden;
+  }
+
+  .draggableContent {
+    display: block;
+    position: relative;
+  }
+
+  table {
+    width: 100%;
+    color: rgba(0, 0, 0, 0.9);
+    tr {
+      background: rgba(0, 0, 0, 0.03);
+
+      &.fakeRow {
+        display: none;
+      }
+
+
+      &:nth-child(even) {
+        background: white;
+      }
+      &:hover {
+        background-color: #d3ebea;
+      }
+
+      td, th {
+        position: relative;
+        padding: 0px 10px 0 10px;
+        text-align: right;
+        vertical-align: middle
+
+        &.priceColumn {
+          text-align: left;
+        }
+      }
+
+      th {
+        font-size: 11px;
+        font-weight: 400;
+        background: #f2f2f2;
+        color: rgba(0, 0, 0, 0.9);
+      }
+
+      td {
+        font-weight: 400;
+        font-size: 11px;
+        user-select: none;
+
+
+
+      }
+
+      &.buyRow {
+        cursor: pointer;
+
+        .cellBar {
+          background-color: alpha($green1, 0.15);
+        }
+        .meaningfulNumber {
+          color: rgba($green1, 1);
+
+          //.nonMeaningful {
+          //  color: rgba($green1, 0.5);
+          //}
+        }
+      }
+
+      &.sellRow {
+        cursor: pointer;
+
+        .cellBar {
+          background-color: alpha($red1, 0.15);
+        }
+        .meaningfulNumber {
+          color: rgba($red1, 1);
+          //.nonMeaningful {
+          //  color: rgba($red1, 0.5);
+          //}
+        }
+      }
+    }
+
+    .cellContent {
+      position: relative;
+      z-index: 2;
+    }
+
+  }
+
+}
+
+.lastPriceRow {
+  position: relative;
+  .dragMarkerContainer {
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    right: 9px;
+    top: 13px;
+  }
+}
+
+.orderBookUpperPanel {
+  position: relative;
+  border-bottom: 1px solid #e2e2e2;
+  line-height: 37px;
+  min-height: 38px;
+  padding: 0 10px;
+
+  .mobileOrderBook & {
+    display flex;
+    justify-content: flex-end;
+
+    border: 1px solid #f2f2f2;
+
+    .orderBookHeader {
+      display none;
+    }
+  }
+  .orderBookHeader {
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 100%;
+  }
+
+  .actionsPanel {
+    float: right;
+
+    .orderBookStatusLabel {
+      font-size: 11px;
+      color: $grey3;
+      user-select: none;
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 4px;
+    }
+
+    .orderBookAction {
+      margin-left: 4px;
+      margin-top: 4px;
+      vertical-align: top;
+      height: 28px;
+      width: 28px;
+      padding: 0;
+      font-size: 11px;
+      border-color: #c9cbcd;
+      color: #949494;
+
+      &.active {
+        &:hover {
+          color: $blue1;
+          background: alpha($blue1, 0.3);
+          border-color: transparent;
+        }
+      }
+
+      &[disabled] {
+        cursor: default;
+      }
+
+      .orderBookActionIcon {
+        position: relative;
+        top: 2px;
+        color: #b0b0b0;
+      }
+    }
+  }
+}
+
+
+.meaningfulNumber {
+  .nonMeaningful {
+    //color: #a3a3a3;
+  }
+}
+
+.dragMarker {
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+  line-height: 100%;
+  font-size: 14px;
+  color: #a3a3a3;
+}
+
+.meaningfulNumber {
+  display: inline-block;
+  vertical-align: middle
+  position: relative;
+  z-index: 2;
+}
+
+.cellBar {
+  position: absolute;
+  width: 40px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  -webkit-transition: width 0.2s; /* Safari */
+  transition: width 0.2s;
+}

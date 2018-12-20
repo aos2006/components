@@ -1,0 +1,6 @@
+/__unused__
+/node_modules
+/build
+Dockerfile
+.dockerignore
+/.idea

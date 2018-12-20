@@ -1,0 +1,6 @@
+{
+  "main": "./Badge.tsx",
+  "name": "@latoken-component/badge",
+  "version": "10.0.183",
+  "license": "MIT"
+}

@@ -1,0 +1,407 @@
+{
+  "name": "@latoken/web-wallet-front",
+  "version": "0.1.6",
+  "transform": {
+    "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
+    "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+    "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$",
+    "^.+\\.module\\.(css|sass|scss)$"
+  ],
+  "moduleNameMapper": {
+    "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --ext .jsx --ext .js --fix",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
+      "tslint --fix",
+      "git add"
+    ]
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "mapCoverage": true,
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/lib/"
+    ],
+    "testRegex": "(/test/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ]
+  },
+  "browserslist": "last 10 versions",
+  "scripts": {
+    "build": "NODE_ENV=production webpack --config webpack/webpack.config.prod.js --bail ",
+    "storybook": "start-storybook -p 6006",
+    "lint": "npm run eslint && npm run tslint",
+    "lint:fix": "npm run eslint:fix",
+    "eslint": "eslint --ext .jsx --ext .js",
+    "eslint:fix": "eslint --ext .jsx --ext .js --fix",
+    "tslint:fix": "tslint --fix",
+    "test": "better-npm-run test",
+    "test:watch": "better-npm-run test:watch",
+    "testKarma": "echo 1",
+    "build-storybook": "build-storybook"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "prettier": {
+    "printWidth": 100,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "semi": true,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "avoid",
+    "proseWrap": "never"
+  },
+  "betterScripts": {
+    "local": {
+      "command": "webpack-dev-server --hot --hotOnly --inline --config webpack/webpack.config.dev.js",
+      "env": {
+        "METRICS_URL": "https://dev-api.nekotal.tech:8080/",
+        "NODE_ENV": "development",
+        "WALLET_PORT": "8060",
+        "WALLET_HOSTNAME": "wallet.latoken.lc",
+        "API_PORT": "",
+        "API_HOSTNAME": "https://api.dev-dex.nekotal.tech",
+        "API_URL": "https://api.dev-dex.nekotal.tech",
+        "WS_URL": "ws://api.latoken.lc:3000"
+      }
+    },
+    "local:nocaptcha": {
+      "command": "webpack-dev-server --config webpack/webpack.dev.js",
+      "env": {
+        "WS_URL": "ws://api.latoken.lc:3000",
+        "METRICS_URL": "https://dev-api.nekotal.tech:8080/",
+        "NODE_ENV": "development",
+        "WALLET_PORT": "8060",
+        "WALLET_HOSTNAME": "wallet.latoken.lc",
+        "API_PORT": "27384",
+        "API_HOSTNAME": "127.0.0.1",
+        "IS_REGRESS_TEST": true,
+        "RECAPTCHA_SITE": "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
+        "RECAPTCHA_SITE_NEW": "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+      }
+    },
+    "local:buildprod": {
+      "command": "webpack-dev-server --config webpack/webpack.config.dev.js",
+      "env": {
+        "METRICS_URL": "https://dev-api.nekotal.tech:8080/",
+        "NODE_ENV": "production",
+        "WALLET_PORT": "8060",
+        "WALLET_HOSTNAME": "wallet.latoken.lc",
+        "API_PORT": "27384",
+        "API_HOSTNAME": "127.0.0.1"
+      }
+    },
+    "local:docker": {
+      "command": "webpack-dev-server --config webpack/webpack.dev.js",
+      "env": {
+        "METRICS_URL": "https://dev-api.nekotal.tech:8080/",
+        "NODE_ENV": "development",
+        "WALLET_PORT": "8060",
+        "WALLET_HOSTNAME": "wallet.latoken.lc",
+        "API_PORT": "27384",
+        "API_HOSTNAME": "back"
+      }
+    },
+    "local:apidev": {
+      "command": "webpack-dev-server --config webpack/webpack.dev.js",
+      "env": {
+        "METRICS_URL": "https://dev-api.nekotal.tech:8080/",
+        "NODE_ENV": "development",
+        "WALLET_PORT": "8060",
+        "WALLET_HOSTNAME": "wallet.latoken.lc",
+        "API_PORT": "27384",
+        "API_HOSTNAME": "46.101.106.204"
+      }
+    },
+    "local:apiprod": {
+      "command": "webpack-dev-server --config webpack/webpack.dev.js",
+      "env": {
+        "METRICS_URL": "https://dev-api.nekotal.tech:8080/",
+        "NODE_ENV": "development",
+        "WALLET_PORT": "8060",
+        "WALLET_HOSTNAME": "wallet.latoken.lc",
+        "API_PORT": "27384",
+        "API_HOSTNAME": "46.101.130.112"
+      }
+    },
+    "local:widget": {
+      "command": "webpack-dev-server --config webpack/webpack.widget.dev.js",
+      "env": {
+        "METRICS_URL": "https://dev-api.nekotal.tech:8080/",
+        "NODE_ENV": "development",
+        "WALLET_PORT": "8060",
+        "WALLET_HOSTNAME": "wallet.latoken.lc",
+        "API_PORT": "",
+        "API_HOSTNAME": "https://api.dev-dex.nekotal.tech/",
+        "WS_URL": "ws://api.latoken.lc:3000"
+      }
+    },
+    "build": {
+      "command": "webpack --config webpack/webpack.config.prod.js --bail",
+      "env": {
+        "NODE_ENV": "production",
+        "API_URL": "https://api.dev-dex.nekotal.tech"
+      }
+    },
+    "build:widget": {
+      "command": "webpack --config webpack/webpack.widget.prod.js --bail",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "build:landing": {
+      "command": "webpack --config webpack/webpack.widget_landing.prod.js --bail",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "build:nocaptcha": {
+      "command": "webpack --config webpack/webpack.prod.js --bail",
+      "env": {
+        "NODE_ENV": "production",
+        "IS_REGRESS_TEST": true,
+        "RECAPTCHA_SITE": "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
+        "RECAPTCHA_SITE_NEW": "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+      }
+    },
+    "test": {
+      "command": "mocha-webpack --require testSetup.js --webpack-config webpack/webpack.test.js src/**/*.test.js",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "test:watch": {
+      "command": "mocha-webpack --require testSetup.js --webpack-config webpack/webpack.test.js --watch src/**/*.test.js",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
+  },
+  "dependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@latoken-component/HtmlBody": "10.0.29",
+    "@latoken-component/NumberWithZeros": "^10.0.86",
+    "@latoken-component/VirtualTable": "^10.0.133",
+    "@latoken-component/autocomplete": "10.0.26",
+    "@latoken-component/button": "^10.0.85",
+    "@latoken-component/chart": "10.0.40",
+    "@latoken-component/draggableAndScrollable": "^10.0.43",
+    "@latoken-component/field": "10.0.52",
+    "@latoken-component/form": "10.0.1",
+    "@latoken-component/hash": "^10.0.85",
+    "@latoken-component/icon": "^10.0.82",
+    "@latoken-component/order-history": "10.0.53",
+    "@latoken-component/orderBook": "^10.0.64",
+    "@latoken-component/plate": "9.1.3",
+    "@latoken-component/progress": "9.1.3",
+    "@latoken-component/responsiver": "^0.6.192",
+    "@latoken-component/svggraph": "10.0.9",
+    "@latoken-component/table": "10.0.45",
+    "@latoken-component/table-scroll": "10.0.7",
+    "@latoken-component/tabs": "9.1.3",
+    "@latoken-component/tooltip": "0.6.43",
+    "@latoken-component/utils": "10.0.38",
+    "@latoken-dex/ladex": "^0.1.209",
+    "@storybook/addon-storyshots": "^4.1.3",
+    "@types/chai": "4.1.2",
+    "@types/classnames": "2.2.3",
+    "@types/core-decorators": "0.10.32",
+    "@types/jest": "^23.3.10",
+    "@types/lodash": "4.14.104",
+    "@types/mocha": "5.2.0",
+    "@types/node": "^9.6.41",
+    "@types/prop-types": "15.5.2",
+    "@types/qrcode.react": "0.6.3",
+    "@types/qs": "6.5.1",
+    "@types/rc-select": "5.9.33",
+    "@types/react": "^16.7.17",
+    "@types/react-copy-to-clipboard": "4.2.5",
+    "@types/react-dom": "^16.0.11",
+    "@types/react-fontawesome": "1.6.4",
+    "@types/react-router": "4.4.1",
+    "@types/react-test-renderer": "^16.0.3",
+    "@types/segment-analytics": "0.0.28",
+    "@types/sinon": "4.3.0",
+    "@types/sweetalert": "1.1.28",
+    "@types/webpack": "^4.4.16",
+    "@types/webpack-env": "^1.13.6",
+    "antd": "^3.11.2",
+    "axios": "0.18.0",
+    "axios-mock-adapter": "1.15.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-import": "^1.9.1",
+    "babel-plugin-lodash": "3.3.2",
+    "babel-plugin-named-asset-import": "^0.2.2",
+    "babel-plugin-transform-decorators-legacy": "1.3.4",
+    "babel-polyfill": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-react-app": "^5.0.3",
+    "babel-preset-stage-0": "6.24.1",
+    "bech32": "1.1.3",
+    "better-npm-run": "0.1.0",
+    "bs58": "^4.0.1",
+    "bs58check": "^2.1.2",
+    "case-sensitive-paths-webpack-plugin": "^2.1.2",
+    "chai": "4.1.2",
+    "classnames": "2.2.5",
+    "copy-webpack-plugin": "4.5.1",
+    "core-decorators": "0.20.0",
+    "core-js": "2.5.5",
+    "crypto-js": "^3.1.9-1",
+    "css-loader": "0.28.11",
+    "dotenv": "^6.1.0",
+    "dotenv-expand": "^4.2.0",
+    "eslint": "4.19.1",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-loader": "^2.1.1",
+    "eslit": "^5.0.0",
+    "extract-text-webpack-plugin": "3.0.2",
+    "file-loader": "1.1.11",
+    "fixed-data-table-2": "0.8.11",
+    "happypack": "4.0.1",
+    "html-webpack-plugin": "^4.0.0-beta.1",
+    "husky": "0.15.0-rc.9",
+    "i18next": "^12.0.0",
+    "i18next-browser-languagedetector": "2.2.3",
+    "i18next-locize-backend": "1.6.0",
+    "i18next-service-backend": "1.0.5",
+    "jest": "^23.6.0",
+    "js-sha3": "^0.8.0",
+    "jsdom": "11.9.0",
+    "json-loader": "0.5.7",
+    "less": "2.7.3",
+    "less-loader": "4.1.0",
+    "lint-staged": "7.0.4",
+    "locize-editor": "^1.7.0",
+    "lodash": "4.17.5",
+    "mini-css-extract-plugin": "^0.4.4",
+    "mobx": "^5.5.1",
+    "mobx-react": "^5.3.4",
+    "mobx-react-devtools": "^6.0.3",
+    "mobx-react-router": "^4.0.5",
+    "mobx-state-tree": "^3.7.1",
+    "mocha": "5.1.1",
+    "mocha-jsdom": "1.1.0",
+    "mocha-webpack": "1.1.0",
+    "moment": "2.22.1",
+    "node-sass": "^4.9.3",
+    "normalizr": "^3.3.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "pnp-webpack-plugin": "^1.1.0",
+    "postcss": "^7.0.6",
+    "postcss-calc": "^7.0.1",
+    "postcss-loader": "2.1.4",
+    "postcss-preset-env": "^6.1.1",
+    "postcss-safe-parser": "^4.0.1",
+    "prettier": "^1.12.1",
+    "prop-types": "15.6.1",
+    "qrcode.react": "^0.8.0",
+    "qs": "6.5.1",
+    "react": "^16.6.0",
+    "react-async-script": "0.9.1",
+    "react-baron": "^3.0.0",
+    "react-click-outside": "^3.0.1",
+    "react-color": "^2.14.1",
+    "react-copy-to-clipboard": "5.0.1",
+    "react-custom-scroll": "^4.0.0",
+    "react-custom-scrollbars": "^4.2.1",
+    "react-deep-force-update": "^2.1.3",
+    "react-dev-utils": "^6.0.4",
+    "react-docgen-typescript-loader": "^3.0.0",
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
+    "react-dom": "^16.3.2",
+    "react-fontawesome": "1.6.1",
+    "react-ga": "2.3.5",
+    "react-google-recaptcha": "0.11.1",
+    "react-i18next": "^8.3.5",
+    "react-loadable": "^5.5.0",
+    "react-router": "4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-test-renderer": "^16.7.0",
+    "react-transition-group": "2.2.1",
+    "react-virtualized": "^9.21.0",
+    "recompose": "^0.30.0",
+    "routes": "^2.1.0",
+    "safe-buffer": "5.1.2",
+    "sass-loader": "4.0.2",
+    "sinon": "4.5.0",
+    "socket.io-client": "^2.1.0",
+    "stompjs": "^2.3.3",
+    "storybook-addon-jsx": "^6.0.0",
+    "style-loader": "0.21.0",
+    "stylus": "0.54.5",
+    "stylus-loader": "3.0.2",
+    "svg-inline-loader": "0.8.0",
+    "svg-inline-react": "3.0.0",
+    "terser-webpack-plugin": "^1.1.0",
+    "ts-jest": "^23.10.5",
+    "ts-loader": "^4.0.0",
+    "tslint": "5.9.1",
+    "tslint-config-prettier": "1.12.0",
+    "tslint-plugin-prettier": "1.3.0",
+    "tslint-react": "3.5.1",
+    "typescript": "^2.8.3",
+    "uglifyjs-webpack-plugin": "1.2.5",
+    "url-loader": "1.0.1",
+    "uuid": "^3.3.2",
+    "webpack": "^4.19.1",
+    "webpack-bundle-analyzer": "2.11.1",
+    "webpack-dev-server": "^3.1.8",
+    "webpack-manifest-plugin": "^2.0.4",
+    "webpack-merge": "4.1.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.1.2",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@storybook/addon-actions": "^4.1.3",
+    "@storybook/addon-console": "^1.1.0",
+    "@storybook/addon-info": "^4.1.3",
+    "@storybook/addon-knobs": "^4.1.3",
+    "@storybook/addon-links": "^4.1.3",
+    "@storybook/addon-notes": "^4.1.3",
+    "@storybook/addon-viewport": "^4.1.3",
+    "@storybook/addons": "^4.1.3",
+    "@storybook/react": "^4.1.3",
+    "@types/storybook__react": "^4.0.0",
+    "autoprefixer": "^8.3.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "eslint-plugin-mocha": "^5.0.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.11.1",
+    "fork-ts-checker-webpack-plugin": "^0.4.10",
+    "hard-source-webpack-plugin": "^0.12.0",
+    "postcss-flexbugs-fixes": "^4.1.0",
+    "react-hot-loader": "^4.3.11",
+    "react-storybook-addon-props-combinations": "^1.1.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-hot-middleware": "^2.22.1"
+  }
+}

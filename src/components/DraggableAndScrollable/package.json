@@ -1,0 +1,6 @@
+{
+  "main": "./DraggableAndScrollable.tsx",
+  "name": "@latoken-component/draggableAndScrollable",
+  "license": "MIT",
+  "version": "10.0.43"
+}

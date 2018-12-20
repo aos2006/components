@@ -1,0 +1,9 @@
+{
+  "main": "Responsiver.js",
+  "name": "@latoken-component/responsiver",
+  "version": "10.0.178",
+  "license": "MIT",
+  "dependencies": {
+    "react-responsive": "4.1.0"
+  }
+}

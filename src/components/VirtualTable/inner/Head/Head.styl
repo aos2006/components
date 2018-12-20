@@ -1,0 +1,57 @@
+@import "../../vars.styl";
+
+.head {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  color: rgba(0,0,0,0.85);
+  text-transform: capitalize;
+  padding: 0 $base-horizontal-padding 0 $base-horizontal-padding;
+
+  &:last-of-type {
+    padding-right: 20px;
+  }
+
+  &:first-of-type {
+    padding-left: 20px;
+  }
+
+}
+
+.small {
+  font-size: 13px;
+  letter-spacing: 0.2px;
+  font-weight: 400;
+  padding: 0 $small-horizontal-padding;
+}
+
+.right {
+  justify-content: flex-end;
+}
+
+.center {
+  justify-content: center;
+}
+
+.sortable {
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(230, 230, 230);
+  }
+
+  .label {
+    display: inline-block;
+    margin-right: 8px;
+  }
+}
+
+.label {
+  display: inline-block;
+}

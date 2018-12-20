@@ -1,0 +1,28 @@
+{
+  "rulesDirectory": ["./"],
+  "extends": ["tslint-config-prettier", "tslint-plugin-prettier", "tslint-react"],
+  "linterOptions": {
+    "exclude": ["node_modules"]
+  },
+  "rules": {
+    "jsx-no-multiline-js": false,
+    "jsx-boolean-value": ["always"],
+    "jsx-no-lambda": false,
+    "no-debugger": true,
+    "member-access": [true, "no-public"],
+    "prettier": [
+      true,
+      {
+        "printWidth": 100,
+        "tabWidth": 2,
+        "singleQuote": true,
+        "semi": true,
+        "trailingComma": "es5",
+        "bracketSpacing": true,
+        "jsxBracketSameLine": false,
+        "arrowParens": "avoid",
+        "proseWrap": "never"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+@import "../../vars.styl";
+
+.col {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0 $base-horizontal-padding 0 $base-horizontal-padding;
+  &:last-of-type {
+    padding-right: 20px;
+  }
+
+  &:first-of-type {
+    padding-left: 20px;
+  }
+}
+
+.inner {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
+  width: 100%;
+
+}
+
+.small {
+  padding: 0 $small-horizontal-padding;
+}
+.center {
+  justify-content: center;
+}
+
+.right {
+  justify-content: flex-end;
+  text-align: right;
+}

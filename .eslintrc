@@ -1,0 +1,65 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "mocha": true,
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "globals": {
+    "Promise": true,
+    "isInsideStatic": true,
+    "isInsideLibrary": true,
+    "isInsideWallet": true,
+    "metricsUrl": true,
+    "isTest": true,
+    "cy": true,
+    "Cypress": true,
+    "RECAPTCHA_SITE": true,
+    "RECAPTCHA_SITE_NEW": true,
+    "IS_REGRESS_TEST": true,
+    "wsUrl": true,
+    "expect": true
+  },
+  "extends": [
+    "./eslint/best-practices.yaml",
+    "./eslint/ecmascript-6.yaml",
+    "./eslint/node-js-and-common-js.yaml",
+    "./eslint/possible-errors.yaml",
+    "./eslint/strict-mode.yaml",
+    "./eslint/stylistic-issues.yaml",
+    "./eslint/variables.yaml",
+    "prettier",
+    "prettier/react"
+  ],
+  "plugins": [
+    "react",
+    "mocha",
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "warn",
+      {
+        "printWidth": 100,
+        "tabWidth": 2,
+        "singleQuote": true,
+        "semi": true,
+        "trailingComma": "es5",
+        "bracketSpacing": true,
+        "jsxBracketSameLine": false,
+        "arrowParens": "avoid",
+        "proseWrap": "never"
+      }
+    ],
+    "no-unused-vars": 0,
+    "no-sync": 0,
+    "no-else-return": 0,
+    "consistent-return": 0,
+    "react/no-find-dom-node": 0,
+    "react/jsx-no-target-blank": 0,
+    "react/no-string-refs": 0,
+    "react/display-name": 0,
+    "react/jsx-uses-vars": 0
+  }
+}

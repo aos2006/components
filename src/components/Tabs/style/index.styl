@@ -1,0 +1,432 @@
+//$import "../../style/themes/default";
+//$import "../../style/mixins/index";
+
+@import "./card-style";
+
+$prefix = lat-tabs;
+
+.tabs {
+  reset-component();
+  position: relative;
+  overflow: hidden;
+  clearfix();
+
+  :global(.{$prefix}-ink-bar) {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    box-sizing: border-box;
+    height: 2px;
+    background-color: $tabs-ink-bar-bg-color;
+    transform-origin: 0 0;
+  }
+
+  :global(.{$prefix}-bar) {
+    border-bottom: $border-width-base $border-style-base $border-color-split;
+    margin: $tab-bar-margin;
+    outline: none;
+    transition: padding .3s $ease-in-out;
+  }
+
+  :global(.{$prefix}-nav-container) {
+    overflow: hidden;
+    font-size: $tabs-title-font-size;
+    line-height: $line-height-base;
+    box-sizing: border-box;
+    position: relative;
+    white-space: nowrap;
+    margin-bottom: -1px;
+    transition: padding .3s $ease-in-out;
+
+    clearfix();
+
+    &-scrolling {
+      padding-left: $tab-scrolling-size;
+      padding-right: $tab-scrolling-size;
+    }
+
+  }
+
+  // https://github.com/ant-design/ant-design/issues/9104
+  &:global(.{$prefix}-bottom) {
+    :global(.{$prefix}-bar) {
+      border-bottom: none;
+      border-top: $border-width-base $border-style-base $border-color-split;
+    }
+
+    :global(.{$prefix}-ink-bar) {
+      bottom: auto;
+      top: 1px;
+    }
+
+    :global(.{$prefix}-nav-container) {
+      margin-bottom: 0;
+      margin-top: -1px;
+    }
+  }
+
+  :global(.{$prefix}-tab-prev),
+  :global(.{$prefix}-tab-next) {
+    user-select: none;
+    z-index: 2;
+    width: 0;
+    height: 100%;
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    position: absolute;
+    text-align: center;
+    color: $text-color-secondary;
+    transition: width .3s $ease-in-out, opacity .3s $ease-in-out, color .3s $ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+
+    &:global(.{$prefix}-tab-arrow-show) {
+      opacity: 1;
+      width: $tab-scrolling-size;
+      height: 100%;
+      pointer-events: auto;
+    }
+
+    &:hover {
+      color: $text-color;
+    }
+
+    &-icon {
+      font-style: normal;
+      font-weight: bold;
+      font-variant: normal;
+      line-height: inherit;
+      vertical-align: baseline;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      text-transform: none;
+
+      &:before {
+        content: '';
+        display: block;
+        width: 1em;
+        height: 1em
+        background-image: url(../assets/arrow.svg);
+        background-position: 50% 50%;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  :global(.{$prefix}-tab-btn-disabled ) {
+    cursor: not-allowed;
+    &,
+    &:hover {
+      color: $disabled-color;
+    }
+  }
+
+  :global(.{$prefix}-tab-next ) {
+    right: 2px;
+
+    &-icon:before {
+
+    }
+  }
+
+  :global(.{$prefix}-tab-prev ) {
+    left: 0;
+    &-icon:before {
+      transform: rotate(-180deg)
+    }
+    :root & {
+      filter: none;
+    }
+  }
+
+  :global(.{$prefix}-nav-wrap) {
+    overflow: hidden;
+    margin-bottom: -1px;
+  }
+
+  :global(.{$prefix}-nav-scroll) {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  :global(.{$prefix}-nav) {
+    box-sizing: border-box;
+    padding-left: 0;
+    transition: transform 0.3s $ease-in-out;
+    position: relative;
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+
+    &:before,
+    &:after {
+      display: table;
+      content: " ";
+    }
+
+    &:after {
+      clear: both;
+    }
+
+    :global(.{$prefix}-tab-disabled) {
+      pointer-events: none;
+      cursor: default;
+      color: $disabled-color;
+    }
+
+    :global(.{$prefix}-tab) {
+      display: inline-block;
+      height: 100%;
+      margin: $tab-horizontal-margin;
+      padding: $tab-horizontal-padding;
+      box-sizing: border-box;
+      position: relative;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      transition: color 0.3s $ease-in-out;
+      cursor: pointer;
+      text-decoration: none;
+
+      &:hover {
+        color: $tab-hover-color;
+      }
+
+      &:active {
+        color: $tab-active-color;
+      }
+
+      :global(.lat-icon) {
+        margin-right: 8px;
+        vertical-align: middle
+      }
+
+      :global(span + .lat-icon) {
+        margin-right: 0;
+        margin-left: 8px;
+      }
+    }
+
+    :global(.{$prefix}-tab-active) {
+      color: $tab-highlight-color;
+      font-weight: 500;
+    }
+  }
+
+  &.large :global(.{$prefix}-nav-container) {
+    font-size: $tabs-title-font-size-lg;
+  }
+
+  &.large :global(.{$prefix}-tab) {
+    padding: 16px;
+  }
+
+  &.small :global(.{$prefix}-nav-container) {
+    font-size: $tabs-title-font-size-sm;
+  }
+
+  &.small :global(.{$prefix}-tab) {
+    padding: 8px 16px;
+    margin-right: 10px
+  }
+
+  &:not(.vertical) {
+    > :global(.{$prefix}-content ) {
+      width: 100%;
+
+      > :global(.{$prefix}-tabpane) {
+        flex-shrink: 0;
+        width: 100%;
+        transition: opacity .45s;
+        opacity: 1;
+      }
+
+      > :global(.{$prefix}-tabpane-inactive) {
+        opacity: 0;
+        height: 0;
+        padding: 0 !important;
+        pointer-events: none;
+      }
+    }
+    > :global(.{$prefix}-content-animated) {
+      display: flex;
+      flex-direction: row;
+      will-change: margin-left;
+      transition: margin-left 0.3s $ease-in-out;
+    }
+  }
+
+  &.vertical {
+    > :global(.{$prefix}-bar ) {
+      border-bottom: 0;
+      height: 100%;
+      :global(.{$prefix}-tab-prev), :global(.{$prefix}-tab-next) {
+        width: $tab-scrolling-size;
+        height: 0;
+        transition: height .3s $ease-in-out, opacity .3s $ease-in-out, color .3s $ease-in-out;
+      }
+      :global(.{$prefix}-tab-prev):global(.{$prefix}-tab-arrow-show),
+      :global(.{$prefix}-tab-next):global(.{$prefix}-tab-arrow-show ) {
+        width: 100%;
+        height: $tab-scrolling-size;
+      }
+
+      :global(.{$prefix}-tab) {
+        float: none;
+        margin: $tab-vertical-margin;
+        padding: $tab-vertical-padding;
+        display: block;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      .extra-content {
+        text-align: center;
+      }
+
+      :global(.{$prefix}-nav-scroll ) {
+        width: auto;
+      }
+
+      :global(.{$prefix}-nav-container),
+      :global(.{$prefix}-nav-wrap ) {
+        height: 100%;
+      }
+
+      :global(.{$prefix}-nav-container) {
+        margin-bottom: 0;
+
+        &:global(.{$prefix}-nav-container-scrolling) {
+          padding: $tab-scrolling-size 0;
+        }
+      }
+
+      :global(.{$prefix}-nav-wrap ) {
+        margin-bottom: 0;
+      }
+
+      :global(.{$prefix}-nav) {
+        width: 100%;
+      }
+
+      :global(.{$prefix}-ink-bar) {
+        width: 2px;
+        left: auto;
+        height: auto;
+        top: 0;
+      }
+
+      :global(.{$prefix}-tab-next) {
+        width: 100%;
+        bottom: 0;
+        height: $tab-scrolling-size;
+        &-icon:before {
+          transform: rotate(90deg)
+        }
+      }
+
+      :global(.{$prefix}-tab-prev ) {
+        top: 0;
+        width: 100%;
+        height: $tab-scrolling-size;
+        &-icon:before {
+          transform: rotate(-90deg)
+        }
+      }
+    }
+
+    > :global(.{$prefix}-content ) {
+      overflow: hidden;
+      width: auto;
+      margin-top: 0 !important;
+    }
+  }
+
+  &.vertical:global(.{$prefix}-left) {
+    > :global(.{$prefix}-bar ) {
+      float: left;
+      border-right: $border-width-base $border-style-base $border-color-split;
+      margin-right: -1px;
+      margin-bottom: 0;
+      :global(.{$prefix}-tab) {
+        text-align: right;
+      }
+      :global(.{$prefix}-nav-container) {
+        margin-right: -1px;
+      }
+      :global(.{$prefix}-nav-wrap ) {
+        margin-right: -1px;
+      }
+      :global(.{$prefix}-ink-bar) {
+        right: 1px;
+      }
+    }
+    > :global(.{$prefix}-content ) {
+      padding-left: 24px;
+      border-left: $border-width-base $border-style-base $border-color-split;
+    }
+  }
+
+  &.vertical:global(.{$prefix}-right) {
+    > :global(.{$prefix}-bar ) {
+      float: right;
+      border-left: $border-width-base $border-style-base $border-color-split;
+      margin-left: -1px;
+      margin-bottom: 0;
+      :global(.{$prefix}-nav-container) {
+        margin-left: -1px;
+      }
+      :global(.{$prefix}-nav-wrap ) {
+        margin-left: -1px;
+      }
+      :global(.{$prefix}-ink-bar) {
+        left: 1px;
+      }
+    }
+    > :global(.{$prefix}-content ) {
+      padding-right: 24px;
+      border-right: $border-width-base $border-style-base $border-color-split;
+    }
+  }
+
+  &:global(.{$prefix}-bottom) > :global(.{$prefix}-bar) {
+    margin-bottom: 0;
+    margin-top: 16px;
+  }
+
+}
+
+:global(.{$prefix}-top) :global(.{$prefix}-ink-bar-animated),
+:global(.{$prefix}-bottom) :global(.{$prefix}-ink-bar-animated) {
+  transition: transform .3s $ease-in-out, width .3s $ease-in-out;
+}
+
+:global(.{$prefix}-left) :global(.{$prefix}-ink-bar-animated),
+:global(.{$prefix}-right) :global(.{$prefix}-ink-bar-animated) {
+  transition: transform .3s $ease-in-out, height .3s $ease-in-out;
+}
+
+.no-flex,
+.noAnimation,
+.vertical {
+  > :global(.{$prefix}-content ) {
+    :global(.{$prefix}-animated) {
+      transform: none !important;
+      margin-left: 0 !important;
+    }
+    > :global(.{$prefix}-tabpane-inactive) {
+      display: none;
+    }
+  }
+}
+

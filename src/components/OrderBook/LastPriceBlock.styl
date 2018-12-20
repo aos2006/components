@@ -1,0 +1,95 @@
+.lastPriceContainer {
+  padding: 2px 10px 0 10px;
+  height: 40px;
+  line-height: 38px;
+
+  @media (max-width: 420px) {
+    height: auto;
+  }
+
+
+  span {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .lastPriceValue {
+    position: relative;
+    .icon {
+      width: 13px;
+      top: 1px;
+      position: relative;
+    }
+    .hint {
+      margin-right: 8px;
+      color: $grey3;
+      font-weight: 400;
+    }
+    .priceValue {
+      font-size: 13px;
+      :global(.lat-icon) {
+        vertical-align: middle;
+        line-height: 0.4em;
+      }
+    }
+
+    .up {
+      color: $green1;
+      & + .icon {
+        color: $green1;
+      }
+    }
+    .down {
+      color: $red1;
+
+      & + .icon {
+        color: $red1;
+      }
+    }
+  }
+
+  .lastPriceValueInUsd {
+    margin-left: 8px;
+
+    color: $grey3;
+
+    @media (max-width: 420px) {
+      margin-right: 8px;
+    }
+  }
+
+  .percentageChangeContainer {
+    position: absolute;
+    z-index: 1;
+    right: 27px;
+    top: 2px;
+    @media (max-width: 420px) {
+      right: 0;
+      top: 0;
+      position: relative;
+    }
+
+
+    @media (max-width: 768px) {
+      right: 10px;
+    }
+
+    .percentageChangeLabel {
+      color: $grey3;
+    }
+
+    .percentageChange {
+      margin-left: 4px;
+      font-size: 12px;
+      color: $grey3;
+
+      &.up {
+        color: $green1;
+      }
+
+      &.down {
+        color: $red1;
+      }
+    }
+  }
+}

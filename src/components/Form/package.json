@@ -1,0 +1,6 @@
+{
+  "main": "Form.tsx",
+  "name": "@latoken-component/form",
+  "license": "MIT",
+  "version": "10.0.1"
+}

@@ -1,0 +1,26 @@
+stages:
+  - build
+
+image: docker:latest
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+services:
+  - docker:dind
+before_script:
+  - export DOCKER_HOST=tcp://localhost:2375
+  - docker info
+  - apk add curl
+
+build_image:
+  stage: build
+  script:
+    - echo "${NPM_RC}" > .npmrc
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.nekotal.tech
+    - docker build -t registry.gitlab.nekotal.tech/dex/webclient:${CI_COMMIT_REF_NAME} .
+    - docker push registry.gitlab.nekotal.tech/dex/webclient:${CI_COMMIT_REF_NAME}
+    - curl --request POST --form "token=$CI_JOB_TOKEN" --form ref=${CI_COMMIT_REF_NAME} https://gitlab.nekotal.tech/api/v4/projects/55/trigger/pipeline
+  only:
+    - dev
+    - qa

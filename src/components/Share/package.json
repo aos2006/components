@@ -1,0 +1,6 @@
+{
+  "main": "./Share.tsx",
+  "name": "@latoken-component/share",
+  "version": "10.0.178",
+  "license": "MIT"
+}

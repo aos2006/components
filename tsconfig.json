@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es6",
+    "lib": ["es6", "dom", "es2015"],
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "lib",
+    "rootDirs": ["src", "stories"],
+    "jsx": "react",
+    "rootDir": ".",
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "removeComments": false,
+    "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "baseUrl": "./src"
+  },
+  "include": ["src/**/*", "src/global.d.ts", "src/translate.d.ts"],
+  "exclude": ["node_modules", "build", "scripts"]
+}

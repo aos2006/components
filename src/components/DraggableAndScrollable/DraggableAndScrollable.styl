@@ -1,0 +1,25 @@
+.draggableAndScrollable {
+  display: block;
+  position: relative;
+  overflow-y: auto;
+  height: 200px;
+  smallScroll()
+}
+
+.draggableAndScrollableContent {
+  display: block;
+  position: relative;
+}
+
+.draggableHandle {
+  user-select: none;
+  cursor: ns-resize;
+  .noDragging & {
+    cursor: default;
+  }
+}
+
+.noSelect * {
+  user-select: none !important;
+  cursor: row-resize !important;
+}
