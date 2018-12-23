@@ -1,5 +1,5 @@
 {
-  "name": "@latoken-web/badge",
+  "name": "@latoken-component/test-badge",
   "version": "0.0.5",
   "description": "A simple button component",
   "main": "dist/Badge.js",
@@ -8,5 +8,5 @@
   "scripts": {
     "transpile": "NODE_ENV=production webpack ./src/Badge.tsx --config ../../../.storybook-prod/webpack.config.js -o ./dist/Badge.js"
   },
-  "gitHead": "acf085f9ebb39c5b79686bde81cfa5a36f39f356"
+  "gitHead": "f2f7878aafeb1d2264fff46e0c0bb83a8980b32b"
 }
