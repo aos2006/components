@@ -6,5 +6,6 @@
   "module": "src/Badge.tsx",
   "scripts": {
     "transpile": "NODE_ENV=production webpack ./src/Badge.tsx --config ../../../.storybook-prod/webpack.config.js -o ./dist/Badge.js"
-  }
+  },
+  "gitHead": "b92bc383b083c8ba41729a4e1d74a15d435a9827"
 }
