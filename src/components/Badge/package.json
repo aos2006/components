@@ -1,6 +1,6 @@
 {
   "name": "@latoken-web-component/badge",
-  "version": "0.1.0",
+  "version": "0.0.2",
   "description": "A simple button component",
   "main": "dist/Badge.js",
   "module": "src/Badge.tsx",
