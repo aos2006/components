@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import React, { Component } from 'react';
 import styles from './Badge.styl';
+
 export interface IBadge {
   className?: string;
 }

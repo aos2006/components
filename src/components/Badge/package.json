@@ -1,5 +1,5 @@
 {
-  "name": "@my-project/Badge",
+  "name": "@latoken-web-component/badge",
   "version": "0.1.0",
   "description": "A simple button component",
   "main": "dist/Badge.js",

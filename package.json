@@ -43,6 +43,7 @@
   },
   "browserslist": "last 10 versions",
   "scripts": {
+    "bootstrap": "npx lerna bootstrap",
     "build": "NODE_ENV=production webpack --config .storybook-prod/webpack.config.js --bail ",
     "storybook": "start-storybook -p 6006",
     "lint": "npm run eslint && npm run tslint",
@@ -54,10 +55,6 @@
     "test:watch": "better-npm-run test:watch",
     "testKarma": "echo 1",
     "build-storybook": "build-storybook"
-  },
-  "babel-loader-lerna-cra": {
-    "imports": "src/components/Badge",
-    "apps": "src/"
   },
   "husky": {
     "hooks": {
