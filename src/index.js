@@ -1,1 +1,1 @@
-export { default as Button } from './components/Button/Button';
+import { Badge } from './components/Badge/src/Badge';

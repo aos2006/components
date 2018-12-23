@@ -6,7 +6,6 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "lib",
-    "rootDirs": ["src", "stories"],
     "jsx": "react",
     "rootDir": ".",
     "strict": false,
@@ -18,9 +17,12 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true,
-    "allowJs": true,
-    "baseUrl": "./src"
+    "allowJs": true
   },
-  "include": ["src/**/*", "src/global.d.ts", "src/translate.d.ts"],
+  "awesomeTypescriptLoaderOptions": {
+    "errorsAsWarnings": true,
+    "useTranspileModule": true
+  },
+  "include": ["src", "src/global.d.ts"],
   "exclude": ["node_modules", "build", "scripts"]
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import uuid from 'uuid/v1';
 import Badge from './Badge';
 import { ComponentsStory } from 'components/ComponentsStory';
 import { text, number } from '@storybook/addon-knobs';
@@ -11,7 +10,7 @@ ComponentsStory.add('Badge', () => (
       <Badge>{1000}</Badge>
     </div>
     {withPropsCombinations(Badge, {
-      children: [100, 1000],
+      children: [10, 1000],
     })()}
   </div>
 ));
