@@ -2,7 +2,7 @@
   "rulesDirectory": ["./"],
   "extends": ["tslint-config-prettier", "tslint-plugin-prettier", "tslint-react"],
   "linterOptions": {
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules", "dist"]
   },
   "rules": {
     "jsx-no-multiline-js": false,
